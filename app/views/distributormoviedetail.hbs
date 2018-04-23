@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Distributor-Movie Details</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script src="https://code.jquery.com/jquery-2.2.3.min.js" integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo="
+        crossorigin="anonymous"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
+        crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
+        crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.0/js/bootstrap-datepicker.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.1/css/bootstrap-datepicker3.min.css">
+
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    <link rel="icon" type="image/png" href="/images/Logo2.png" />
+    <link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/main.css" />
+    <script src="/js/main.js"></script>
+</head>
+
+<body onload="startTime() ">
+
+    <div class="nav">
+        <a href="/distributor/dashboarddistributor">
+            <span id="NavLogo"></span>
+        </a>
+        <span id="NavHelp">?</span>
+
+        <div class="chip">
+            {{sessionname}}
+        </div>
+
+        <span id="NavSignup">
+            <a href="/logout">Logout</a>
+        </span>
+    </div>
+    {{!-- iconbar --}}
+    <div id="wrapprofile">
+        <div class="icon-bar">
+            <a class="iconprofile" href="/distributor/distributorprofile">
+                <div class="iconprofileimage"></div>
+            </a>
+            <a class="icontop10" href="/distributor/top10">
+                <div class="icontop10image"></div>
+            </a>
+            <a class="iconmycontent" id="active" href="#">
+                <div class="iconmycontentimage"></div>
+            </a>
+            <a class="iconuploadcontent" href="/distributor/distributoruploadmovie">
+                <div class="iconuploadcontentimage"></div>
+            </a>
+            <a class="iconhelp" href="#">
+                <div class="iconhelpimage"></div>
+            </a>
+        </div>
+        <div class="window">
+            <div class="windowcontentheader">
+                <span id="windowheaderlabel">
+                    <a href="/distributor/distributorcontent">
+                        <u>Movies Feed</u>
+                    </a>>>{{moviename}}
+                </span>
+            </div>
+            <div class="windowmoviedetail">
+                <div class="innerwindowmoviedetail">
+                    <span id="innerwindowmovietitle">
+                        {{moviename}}
+                    </span>
+                    <span id="innerwindowmoviegenre">
+                        {{moviegenre}}
+                    </span>
+                    <span id="innerwindowmovieleadartists">
+                        <b>Lead Artists:</b>
+                        <br> {{leadartists}}
+                    </span>
+                    <span id="innerwindowmovielength">
+                        <b>Movie Length:</b> {{movielength}} min
+                    </span>
+                    <span id="innerwindowmoviebudget">
+                        <b>Movie Budget:</b> {{moviebudget}} millions
+                    </span>
+                    <span id="innerwindowreleasedate">
+                        <b>Release Date:</b> {{releasedate}}
+                    </span>
+                    <span id="innerwindowdirector">
+                        <b>Director:</b> {{director}}
+                    </span>
+                    <span id="innerwindowproducer">
+                        <b>Producer:</b> {{producer}}
+                    </span>
+                    <span id="innerwindowdescription">
+                        <b>Description:</b>
+                        <br>{{description}}
+                    </span>
+                </div>
+
+            </div>
+            <div class="windowuserrating">
+                <div class="windowuserrating1">
+                         <div class="windowuserrating12"></div>
+                           <div class="windowuserrating13"></div>
+                </div>
+                <div class="windowuserrating2">
+                    <div class="otheruserratings">
+                        <div class="totalratings">
+                            <span id="userratingtitle">User Rating:</span>
+                            <br>
+                            <span id="userratingtext">{{displayaveragerating}} average based on {{countrating}} ratings.
+                            </span>
+                            <br>
+                            <span class="icon" style="font-size:  20px;">★</span>
+                            <span class="icon" style="font-size:20px;">★</span>
+                            <span class="icon" style="font-size:  20px;">★</span>
+                            <span class="icon" style="font-size:20px;">★</span>
+                            <span class="icon" style="font-size:20px;">★</span>
+                            <span id="ratingfive">{{displayrating5}}</span>
+                            <br>
+                            <span class="icon" style="font-size:  20px;">★</span>
+                            <span class="icon" style="font-size:20px;">★</span>
+                            <span class="icon" style="font-size:  20px;">★</span>
+                            <span class="icon" style="font-size:20px;">★</span>
+                            <span id="ratingfour">{{displayrating4}}</span>
+                            <br>
+                            <span class="icon" style="font-size:  20px;">★</span>
+                            <span class="icon" style="font-size:20px;">★</span>
+                            <span class="icon" style="font-size:  20px;">★</span>
+                            <span id="ratingthree">{{displayrating3}}</span>
+                            <br>
+                            <span class="icon" style="font-size:  20px;">★</span>
+                            <span class="icon" style="font-size:20px;">★</span>
+                            <span id="ratingtwo">{{displayrating2}}</span>
+                            <br>
+                            <span class="icon" style="font-size:  20px;">★</span>
+                            <span id="ratingone">{{displayrating1}}</span>
+                        </div>
+                        <div class="innerotheruserratings">
+
+                            {{#each ratinglist}}
+                            <span id="ratingusername">
+                                <b>Username:</b> {{this.username}}
+                                <br>
+                                <b>Rating:</b> {{this.rating}}
+                                <br>
+                                <b>Review:</b> {{this.review}}
+                            </span>
+                            <br>
+                            <br> {{/each}}
+
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="windowcontentfooter">
+
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <span id="FootHome">Dashboard>>Movie Detail</span>
+        <span id="FootTime"></span>
+    </div>
+
+</body>
+
+</html>

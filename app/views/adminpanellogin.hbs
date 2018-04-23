@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Admin Panel</title>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="/stylesheets/materialize.min.css" media="screen,projection" />
+    <link type="text/css" rel="stylesheet" href="/stylesheets/main.css" />
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.googleapis.com/css?family=Antic|Economica" rel="stylesheet">
+</head>
+
+<body>
+    <nav>
+        <div class="nav-wrapper">
+            <a class="brand-logo" style="
+    left: 45.3%;
+    font-family: 'Economica', sans-serif;
+">Admin Panel</a>
+            <a href="#" data-target="mobile-demo" class="sidenav-trigger">
+                <i class="material-icons">menu</i>
+            </a>
+         
+              
+
+            </ul>
+        </div>
+    </nav>
+    <div class="container" style="margin-top: 100px ;" >
+        <!-- Page Content goes here -->
+        <div class="row">
+            <div class="col s12">
+                <div class="row">
+                    <div class="grid-example col s12 m6 l5" style="height:500px; background: #e8e8e8; border-radius: 10px;">
+                        <div class="row"></div>
+                        <span class="flow-text" style="  font-family: 'Antic', sans-serif; margin: 10px;">Login</span>
+                        <div class="row"></div>
+                        <div class="row"></div>
+                        <div class="row">
+                            <form class="col s12" action="/admin/loginadmin" method="POST">
+
+                                <div class="input-field col s12">
+                                    <input id="email" type="email" name="username" class="validate" required>
+                                    <label for="email">Email</label>
+                                </div>
+                                <div class="row"></div>
+                                <div class="row"></div>
+                                <div class="input-field col s12">
+                                    <input id="password" type="password" name="password" class="validate" required>
+                                    <label for="password">Password</label>
+                                </div>
+                                <div class="row"></div>
+                                <div class="row" style=" margin: 10px; color: orangered;">{{message}}</div>
+                                <div class="row">
+
+                                    <div class="col s3 l3">
+                                        <button class="waves-effect waves-light btn-large" style="margin: 10px;">Login </button>
+                                    </div>
+                                    <div class="col s9 l9"></div>
+                                    <!-- <div class="col s4 offset-s8 l3 offset-l9"></div> -->
+                                </div>
+
+
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col s0"></div>
+    </div>
+
+    </div>
+    <ul class="sidenav" id="mobile-demo" style="background-color: #000000ab;">
+        <li>
+            <a href="/">Index</a>
+        </li>
+    </ul>
+
+    <!--JavaScript at end of body for optimized loading-->
+    <script type="text/javascript" src="/js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="/js/materialize.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.sidenav').sidenav();
+        });
+
+    </script>
+</body>
+
+</html>

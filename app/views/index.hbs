@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Home-Movie Database and Ratings</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/main.css" />
+        <script src="/js/main.js"></script>
+        <link rel="icon" type="image/png" href="/images/Logo2.png" />
+        <link href="https://fonts.googleapis.com/css?family=Antic|Economica" rel="stylesheet">
+</head>
+
+<body onload="startTime() ">
+        <!-- Navigation bar -->
+        <div class="nav">
+                <span id="NavHelp">?</span>
+                <span id="NavLogo"></span>
+                <span id="NavSignup">
+                        <a href="/signup">Sign Up</a>
+                </span>
+        </div>
+
+        <div class="Login1">
+                <form action="/loginuser" method="POST">
+                        <span id="Titlestandarduser">Standard User</span>
+                        <span id="Label1">Username</span>
+                        <span id="txtusername">
+                                <input type="text" name="username" required>
+                        </span>
+                        <span id="Label2">Password</span>
+                        <span id="txtuserpassword">
+                                <input type="password" name="password" required>
+                        </span>
+                        <span id="labelu1">
+                                <a href="#" style="color:white; text-decoration: none"><u>Forget Password</u></a></span>
+                        <span id="btnsubmituser">
+                                <input type="submit" value="Login">
+                        </span>
+                </form>
+        </div>
+        <div class="Login2">
+                <form action="/logindistributor" method="POST">
+                        <span id="Titledistributor">Verified Distributor</span>
+                        <span id="Label1">CompanyID</span>
+                        <span id="txtcompanyid">
+                                <input type="text" name="username" required>
+                        </span>
+                        <span id="Label2">Password</span>
+                        <span id="txtcompanypassword">
+                                <input type="password" name="password" required> </span>
+                        <span id="labelc1">
+                              <a href="#" style="color:white; text-decoration: none"><u>Forget Password</u></a></span>
+                        <span id="btnsubmitcompany">
+                                <input type="submit" value="Login">
+                        </span>
+                </form>
+        </div>
+        <!-- Footer -->
+        <div class="footer">
+                <span id="FootHome">Home</span>
+                <span id="FootTime"></span>
+        </div>
+</body>
+
+</html>

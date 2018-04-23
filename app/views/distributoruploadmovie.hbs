@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Dashboard-Upload Movie content</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<script   src="https://code.jquery.com/jquery-2.2.3.min.js"   integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo="   crossorigin="anonymous"></script>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.0/js/bootstrap-datepicker.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.1/css/bootstrap-datepicker3.min.css">
+<script>
+$( document ).ready(function() {
+    $("#from-datepicker").datepicker({ 
+        format: 'yyyy-mm-dd'
+    });
+    $("#from-datepicker").on("change", function () {
+        var fromdate = $(this).val();
+    });
+}); 
+</script>
+
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    <link rel="icon" type="image/png" href="/images/Logo2.png" />
+    <link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/main.css" />
+    <script src="/js/main.js"></script>
+</head>
+
+<body onload="startTime() ">
+
+    <div class="nav">
+        <a href="/distributor/dashboarddistributor">
+            <span id="NavLogo"></span>
+        </a>
+        <span id="NavHelp">?</span>
+
+        <div class="chip">
+            {{sessionname}}
+        </div>
+
+        <span id="NavSignup">
+            <a href="/logout">Logout</a>
+        </span>
+    </div>
+    {{!-- iconbar --}}
+    <div id="wrapprofile">
+        <div class="icon-bar">
+            <a class="iconprofile" href="/distributor/distributorprofile">
+                <div class="iconprofileimage"></div>
+            </a>
+            <a class="icontop10" href="/distributor/top10">
+                <div class="icontop10image"></div>
+            </a>
+            <a class="iconmycontent" href="/distributor/distributorcontent">
+                <div class="iconmycontentimage"></div>
+            </a>
+            <a class="iconuploadcontent" id="active" href="#">
+                <div class="iconuploadcontentimage"></div>
+            </a>
+            <a class="iconhelp" href="#">
+                <div class="iconhelpimage"></div>
+            </a>
+        </div>
+        <div class="window">
+            <div class="windowuploadheader">
+                <span id="windowheaderlabel">Upload Movie</span>
+            </div>
+            <form id="uploadmovie" method="POST" action="/distributor/upload">
+                <span id="profilelabel1">Movie Name</span>
+                <span id="uploadtext1">
+                    <input type="text" name="moviename" placeholder="Enter movie name" required>
+                </span>
+                <span id="profilelabel2">Movie Genre:</span>
+                <span id="uploadtext2">
+                    <select class="browser-default" name="moviegenre">
+                        <option value="" disabled selected>Choose your option</option>
+                        <option value="Action">Action</option>
+                        <option value="Adventure">Adventure</option>
+                        <option value="Comedy">Comedy</option>
+                        <option value="Horror">Horror</option>
+                        <option value="War">War</option>
+                        <option value="Sci-Fi">Sci-Fi</option>
+                        <option value="Musical">Musical</option>
+                        <option value="Fantasy">Fantasy</option>
+                        <option value="Western">Western</option>
+                        <option value="Crime">Crime</option>
+                        <option value="Documentry">Documentry</option>
+                        <option value="Mystery">Mystery</option>
+                        <option value="Romance">Romance</option>
+                        <option value="Romance-Comedy">Romance-Comedy</option>
+                        <option value="Action-Comedy">Action-Comedy</option>
+                        <option value="SuperHero">SuperHero</option>
+                        <option value="Family">Family</option>
+                        <option value="Sport">Sport</option>
+                        <option value="Animation">Animation</option>
+                        <option value="Biography">Biography</option>
+                    </select>
+                    {{!--
+                    <input type="text" name="moviegenre" placeholder="Enter genre" required> --}}
+                </span>
+                {{!--
+                <div class="select-style">
+                    <select>
+
+                    </select>
+                </div> --}}
+
+
+
+                <span id="profilelabel3">Lead Artists:</span>
+                <span id="uploadtext3">
+                    <input type="text" name="movieartists" placeholder="List all lead artists" required>
+                </span>
+                <span id="profilelabel4">Movie Length:</span>
+                <span id="uploadtext4">
+                    <input type="text" name="movielength" placeholder="Length in minutes" required>
+                </span>
+                <span id="profilelabel5">Movie Budget:</span>
+                <span id="uploadtext5">
+                    <input type="text" name="moviebudget" placeholder="Total budget" required>
+                </span>
+                <span id="profilelabel6">Director:</span>
+                <span id="uploadtext6">
+                    <input type="text" name="moviedirector" placeholder="Name of Director" required>
+                </span>
+                <span id="profilelabel7">Producer:</span>
+                <span id="uploadtext7">
+                    <input type="text" name="movieproducer" placeholder="Name of Producer" required>
+                </span>
+                <span id="profilelabel8">Release Date:</span>
+                <span id="uploadtext8">
+                    <input type="text" name="releasedate" placeholder="choose date" id="from-datepicker"/>
+                    {{!-- <input type="date" name="moviereleasedate"  required> --}}
+                     {{!-- <input type="text" class="datepicker"  onclick="showdate()"> --}}
+                </span>
+                <span id="profilelabel9">Description:</span>
+                <span id="uploadtext9">
+                    <textarea rows="4" name="moviedescription" placeholder="enter description in less than 300 characters" required></textarea> {{!--
+                    <input type="text" name="moviedescription" placeholder="Enter a short intro about movie" required> --}}
+                </span>
+            </form>
+            <div class="windowuploadfooter">
+                <span id="windowuploadfooterbutton">
+                    <input type="submit" value="Upload Info" form="uploadmovie">
+                </span>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <span id="FootHome">Dashboard>>Upload</span>
+        <span id="FootTime"></span>
+        <div id="snackbar"></div>
+    </div>
+
+</body>
+
+</html>

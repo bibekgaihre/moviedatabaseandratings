@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Dashbaord-My Profile</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    <link rel="icon" type="image/png" href="/images/Logo2.png" />
+    <link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/main.css" />
+    <script src="/js/main.js"></script>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
+        crossorigin="anonymous">
+</head>
+
+<body onload="startTime() || checktitle() ">
+
+    <div class="nav">
+        <a href="/user/dashboarduser">
+            <span id="NavLogo"></span>
+        </a>
+        <span id="NavHelp">?</span>
+        <div class="chip">
+            {{sessionname}}
+        </div>
+        <span id="NavSignup">
+            <a href="/logout">Logout</a>
+        </span>
+    </div>
+    {{!-- iconbar --}}
+    <div id="wrapprofile">
+        <div class="icon-bar">
+            <a class="iconprofile" id="active">
+                <div class="iconprofileimage"></div>
+            </a>
+            <a class="icontop10" href="/user/top10">
+                <div class="icontop10image"></div>
+            </a>
+            <a class="iconsearchcontent" href="/user/searchmovie">
+                <div class="iconsearchcontentimage"></div>
+            </a>
+            <a class="iconcontentfeed" href="/user/usercontent">
+                <div class="iconcontentfeedimage"></div>
+            </a>
+            <a class="iconhelp" href="#">
+                <div class="iconhelpimage"></div>
+            </a>
+        </div>
+        <div class="window">
+            <div class="windowprofileheader">
+                <span id="windowheaderlabel">My Profile</span>
+            </div>
+            <span id="profilelabel1">Username:</span>
+            <span id="profiletext1">{{sessionname}}</span>
+            <span id="profilelabel2">First name:</span>
+            <span id="profiletext2">{{sessionfirstname}}</span>
+            <span id="profilelabel3">Last name:</span>
+            <span id="profiletext3">{{sessionlastname}}</span>
+            <span id="profilelabel4">Email:</span>
+            <span id="profiletext4">{{sessionemail}}</span>
+
+            <a href="/user/myprofile/deleteaccount/{{sessionuserid}}">
+                <button type="button" class="btn btn-primary" style="position: absolute; top: 350px; left: 30px;">
+                    Delete Account
+                </button>
+            </a>
+            <div class="windowprofilefooter"></div>
+        </div>
+    </div>
+
+
+
+
+
+    <!-- Footer -->
+    <div class="footer">
+        <span id="FootHome"></span>
+        <span id="FootTime"></span>
+    </div>
+  
+</body>
+
+</html>

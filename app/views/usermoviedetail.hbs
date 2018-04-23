@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>User-Movie Details</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-2.2.3.min.js" integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo="
+        crossorigin="anonymous"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
+        crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
+        crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.0/js/bootstrap-datepicker.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.1/css/bootstrap-datepicker3.min.css">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    <link rel="icon" type="image/png" href="/images/Logo2.png" />
+
+
+    <link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/main.css" />
+    <script src="/js/main.js"></script>
+</head>
+
+<body onload="startTime() ">
+    <script>
+        //Count content
+        maxL = 500;
+        var bName = navigator.appName;
+
+        function taLimit(taObj) {
+            if (taObj.value.length == maxL) return false;
+            return true;
+        }
+
+        function taCount(taObj, Cnt) {
+            objCnt = createObject(Cnt);
+            objVal = taObj.value;
+            if (objVal.length > maxL) objVal = objVal.substring(0, maxL);
+            if (objCnt) {
+                if (bName == "Netscape") {
+                    objCnt.textContent = maxL - objVal.length;
+                } else {
+                    objCnt.innerText = maxL - objVal.length;
+                }
+            }
+            return true;
+        }
+
+        function createObject(objId) {
+            if (document.getElementById) return document.getElementById(objId);
+            else if (document.layers) return eval("document." + objId);
+            else if (document.all) return eval("document.all." + objId);
+            else return eval("document." + objId);
+        } //End Count content
+    </script>
+    <div class="nav">
+        <a href="/user/dashboarduser">
+            <span id="NavLogo"></span>
+        </a>
+        <span id="NavHelp">?</span>
+
+        <div class="chip">
+            {{sessionname}}
+        </div>
+
+        <span id="NavSignup">
+            <a href="/logout">Logout</a>
+        </span>
+    </div>
+    {{!-- iconbar --}}
+    <div id="wrapprofile">
+        <div class="icon-bar">
+            <a class="iconprofile" href="/user/myprofile">
+                <div class="iconprofileimage"></div>
+            </a>
+            <a class="icontop10" href="/user/top10">
+                <div class="icontop10image"></div>
+            </a>
+            <a class="iconsearchcontent" href="/user/searchmovie">
+                <div class="iconsearchcontentimage"></div>
+            </a>
+            <a class="iconcontentfeed" href="#" id="active">
+                <div class="iconcontentfeedimage"></div>
+            </a>
+            <a class="iconhelp" href="#">
+                <div class="iconhelpimage"></div>
+            </a>
+        </div>
+        <div class="window">
+            <div class="windowcontentheader">
+                <span id="windowheaderlabel">
+                    <a href="/user/usercontent">
+                        <u>Movies Feed</u>
+                    </a>>>{{moviename}}</span>
+            </div>
+            <div class="windowmoviedetail">
+                <div class="innerwindowmoviedetail">
+                    <span id="innerwindowmovietitle">
+                        {{moviename}}
+                    </span>
+                    <span id="innerwindowmoviegenre">
+                        {{moviegenre}}
+                    </span>
+                    <span id="innerwindowmovieleadartists">
+                        <b>Lead Artists:</b>
+                        <br> {{leadartists}}
+                    </span>
+                    <span id="innerwindowmovielength">
+                        <b>Movie Length:</b> {{movielength}} min
+                    </span>
+                    <span id="innerwindowmoviebudget">
+                        <b>Movie Budget:</b> {{moviebudget}} millions
+                    </span>
+                    <span id="innerwindowreleasedate">
+                        <b>Release Date:</b> {{releasedate}}
+                    </span>
+                    <span id="innerwindowdirector">
+                        <b>Director:</b> {{director}}
+                    </span>
+                    <span id="innerwindowproducer">
+                        <b>Producer:</b> {{producer}}
+                    </span>
+                    <span id="innerwindowdescription">
+                        <b>Description:</b>
+                        <br>{{description}}
+                    </span>
+                </div>
+
+            </div>
+            <div class="windowuserrating">
+                <div class="windowuserrating1">
+                    <div class="windowuserrating12">
+                        <form action="/user/usercontent/submitreview/{{movieid}}" method="POST">
+                            <span id="userreviewlabel">Review and Rate: </span>
+                            <span id="userreviewnote">*If already reviewed, your previous rating will be replaced. You have
+                                <b>
+                                    <label id="myCounter">500</label>
+                                </b> characters left</span>
+                            <span id="userreviewtext">
+                                <textarea rows="4" name="userreview" placeholder="" onKeyPress="return taLimit(this)" onKeyUp="return taCount(this,'myCounter')"
+                                    id="content" rows=7 wrap="physical" required></textarea>
+                            </span>
+                            <div class="rating">
+
+
+                                <label>
+                                    <input type="radio" name="stars" value="1" checked />
+                                    <span class="icon">★</span>
+                                </label>
+                                <label>
+                                    <input type="radio" name="stars" value="2" />
+                                    <span class="icon">★</span>
+                                    <span class="icon">★</span>
+                                </label>
+                                <label>
+                                    <input type="radio" name="stars" value="3" />
+                                    <span class="icon">★</span>
+                                    <span class="icon">★</span>
+                                    <span class="icon">★</span>
+                                </label>
+                                <label>
+                                    <input type="radio" name="stars" value="4" />
+                                    <span class="icon">★</span>
+                                    <span class="icon">★</span>
+                                    <span class="icon">★</span>
+                                    <span class="icon">★</span>
+                                </label>
+                                <label>
+                                    <input type="radio" name="stars" value="5" />
+                                    <span class="icon">★</span>
+                                    <span class="icon">★</span>
+                                    <span class="icon">★</span>
+                                    <span class="icon">★</span>
+                                    <span class="icon">★</span>
+                                </label>
+                            </div>
+                            <span id="buttonrate">
+                                <button class="btn waves-effect waves-light" type="submit" name="action">Rate
+                                </button>
+                            </span>
+                        </form>
+                    </div>
+                    <div class="windowuserrating13">
+
+                    </div>
+                </div>
+                <div class="windowuserrating2">
+                    <div class="otheruserratings">
+                        <div class="totalratings">
+                            <span id="userratingtitle">User Rating:</span>
+                            <br>
+                            <span id="userratingtext">{{displayaveragerating}} average based on 
+                               {{countrating}}
+                               ratings.</span>
+                            <br>
+                            <span class="icon" style="font-size:  20px;">★</span>
+                            <span class="icon" style="font-size:20px;">★</span>
+                            <span class="icon" style="font-size:  20px;">★</span>
+                            <span class="icon" style="font-size:20px;">★</span>
+                            <span class="icon" style="font-size:20px;">★</span>
+                            <span id="ratingfive">{{displayrating5}}</span>
+                            <br>
+                             <span class="icon" style="font-size:  20px;">★</span>
+                            <span class="icon" style="font-size:20px;">★</span>
+                            <span class="icon" style="font-size:  20px;">★</span>
+                            <span class="icon" style="font-size:20px;">★</span>
+                            <span id="ratingfour">{{displayrating4}}</span>
+                            <br>
+                            <span class="icon" style="font-size:  20px;">★</span>
+                            <span class="icon" style="font-size:20px;">★</span>
+                            <span class="icon" style="font-size:  20px;">★</span>
+                            <span id="ratingthree">{{displayrating3}}</span>
+                            <br>
+                             <span class="icon" style="font-size:  20px;">★</span>
+                            <span class="icon" style="font-size:20px;">★</span>
+                            <span id="ratingtwo">{{displayrating2}}</span>
+                            <br>
+                            <span class="icon" style="font-size:  20px;">★</span>
+                            <span id="ratingone">{{displayrating1}}</span>
+                        </div>
+                        <div class="innerotheruserratings">
+
+                            {{#each ratinglist}}
+                            <span id="ratingusername">
+                                <b>Username:</b> {{this.username}}
+                                <br>
+                                <b>Rating:</b> {{this.rating}}
+                                <br>
+                                <b>Review:</b> {{this.review}}
+                            </span>
+                            <br>
+                            <br> {{/each}}
+
+
+                        </div>
+
+                    </div>
+                    {{!--
+                    <span id="buttonshowrate">
+                        <a id="showreview" class="waves-effect waves-light btn">Show Previous Reviews and Ratings</a>
+                    </span> --}} {{!--
+                    <div id="pages_about" class="textContainer_about">
+                        <div class="textWord_about" data-link="first">
+                            <p>ffffffffffffffffffffffffffff</p>
+                        </div>
+                    </div> --}}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="windowcontentfooter">
+
+    </div>
+
+    </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <span id="FootHome">Dashboard>>Movie Detail</span>
+        <span id="FootTime"></span>
+    </div>
+
+</body>
+
+</html>

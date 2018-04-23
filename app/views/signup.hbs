@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Signup</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- Compiled and minified CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+
+        <!-- Compiled and minified JavaScript -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+        <link rel="icon" type="image/png" href="/images/Logo2.png" />
+        <link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/main.css" />
+        <script src="/js/main.js"></script>
+</head>
+
+<body onload="startTime()">
+
+        <div class="nav">
+                <span id="NavLogo"></span>
+                <span id="NavHelp">?</span>
+                <span id="NavSignup">
+                        <a href="/">Login</a>
+                </span>
+        </div>
+
+        <div id="wrap">
+                <div class="left">
+                        <div id="innerleft">
+                                <form action="/signup/usersignup" method="POST">
+                                        <span id="titlesignupuser">Register Standard User</span>
+                                        <span id="signupuserlabel1">First Name</span>
+                                        <span id="signupusertextbox1">
+                                                <input type="text" name="firstname" required>
+                                        </span>
+                                        <span id="signupuserlabel2">Last Name</span>
+                                        <span id="signupusertextbox2">
+                                                <input type="text" name="lastname" required>
+                                        </span>
+                                        <span id="signupuserlabel3">Username</span>
+                                        <span id="signupusertextbox3">
+                                                <input type="text" name="username" required>
+                                        </span>
+                                        <span id="signupuserlabel4">Email</span>
+                                        <span id="signupusertextbox4">
+                                                <input type="email" name="email" required>
+                                        </span>
+                                        <span id="signupuserlabel5">Password</span>
+                                        <span id="signupusertextbox5">
+                                                <input type="password" name="password" id="pass1" onkeyup="checkuserPass(); return false;" required>
+                                        </span>
+                                        <span id="signupuserlabel6">Confirm Password</span>
+                                        <span id="signupusertextbox6">
+                                                <input type="password" name="confirmpassword" id="pass2" onkeyup="checkuserPass(); return false;" required>
+                                        </span>
+                                        <span id="confirmMessageuser" class="confirmMessageuser"></span>
+                                        <span id="btnregisteruser">
+                                                <input type="submit" value="Register" >
+                                        </span>
+                                </form>
+
+                        </div>
+                </div>
+                <div class="right">
+                        <div id="innerright">
+                                <form action="/signup/distributorsignup" method="POST">
+                                        <span id="titlesignupuser">Register Distributor</span>
+                                        <span id="signupuserlabel1">Company Name</span>
+                                        <span id="signupusertextbox1">
+                                                <input type="text" name="companyname" required>
+                                        </span>
+                                        <span id="signupuserlabel2">Company ID</span>
+                                        <span id="signupusertextbox2">
+                                                <input type="text" name="companyid" required>
+                                        </span>
+                                        <span id="signupuserlabel3">Location</span>
+                                        <span id="signupusertextbox3">
+                                                <input type="text" name="location" required>
+                                        </span>
+                                        <span id="signupuserlabel4">Company Email</span>
+                                        <span id="signupusertextbox4">
+                                                <input type="email" name="companyemail" required>
+                                        </span>
+                                        <span id="signupuserlabel5">Password</span>
+                                        <span id="signupusertextbox5">
+                                                <input type="password" name="password" id="pass3" onkeyup="checkdisPass(); return false;" required>
+                                        </span>
+                                        <span id="signupuserlabel6">Confirm Password</span>
+                                        <span id="signupusertextbox6">
+                                                <input type="password" name="confirmpassword" id="pass4" onkeyup="checkdisPass(); return false;" required>
+                                        </span>
+                                        <span id="confirmMessagedis" class="confirmMessagedis"></span>
+                                        <span id="btnregisteruser">
+                                                <input type="submit" value="Register" >
+                                        </span>
+                                </form>
+
+                        </div>
+                </div>
+        </div>
+
+
+
+
+
+
+        <!-- Footer -->
+        <div class="footer">
+                <span id="FootHome">Signup</span>
+                <span id="FootTime"></span>
+                <div id="snackbar">{{notification}}<br>
+                {{#if errors}}
+                {{#each errors}}
+                {{this.msg}}<br>
+                {{/each}}
+                {{/if}}
+                </div>
+        </div>
+
+</body>
+
+</html>

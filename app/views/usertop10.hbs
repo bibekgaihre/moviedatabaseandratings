@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Dashbaord-Top10</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://code.jquery.com/jquery-2.2.3.min.js" integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo="
+        crossorigin="anonymous"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
+        crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
+        crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.0/js/bootstrap-datepicker.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.1/css/bootstrap-datepicker3.min.css">
+
+
+
+
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    <link rel="icon" type="image/png" href="/images/Logo2.png" />
+    <link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/main.css" />
+    <script src="/js/main.js"></script>
+
+
+
+
+
+</head>
+
+<body onload="startTime() || checktitle() ">
+
+    <div class="nav">
+        <a href="/user/dashboarduser">
+            <span id="NavLogo"></span>
+        </a>
+        <span id="NavHelp">?</span>
+        <div class="chip">
+            {{sessionname}}
+        </div>
+        <span id="NavSignup">
+            <a href="/logout">Logout</a>
+        </span>
+    </div>
+    {{!-- iconbar --}}
+    <div id="wrapprofile">
+        <div class="icon-bar">
+            <a class="iconprofile" href="/user/myprofile">
+                <div class="iconprofileimage"></div>
+            </a>
+            <a class="icontop10" href="#" id="active">
+                <div class="icontop10image"></div>
+            </a>
+            <a class="iconsearchcontent" href="/user/searchmovie">
+                <div class="iconsearchcontentimage"></div>
+            </a>
+            <a class="iconcontentfeed" href="/user/usercontent">
+                <div class="iconcontentfeedimage"></div>
+            </a>
+            <a class="iconhelp" href="#">
+                <div class="iconhelpimage"></div>
+            </a>
+        </div>
+        <div class="window">
+            <div class="windowsearchheader">
+                <span id="windowheaderlabel">Top 10 Movies</span>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <table class="table table-fixed">
+                        <thead>
+                            <tr>
+                                <th class="col-xs-10">Movie Name</th>
+                                <th class="col-xs-2">Weighted Rating</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each movielist}}
+                            <tr>
+                                <td class="col-xs-10">
+                                    {{this.moviename}}
+                                </td>
+                            </tr>
+                            <td class="col-xs-2">
+
+                                {{this.rating}}
+
+                            </td>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+
+            <div class="windowsearchfooter">
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+    <!-- Footer -->
+    <div class="footer">
+        <span id="FootHome"></span>
+        <span id="FootTime"></span>
+    </div>
+</body>
+
+</html>

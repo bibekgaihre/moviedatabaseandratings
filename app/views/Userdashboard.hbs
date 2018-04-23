@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Dashboard-User</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/main.css" />
+    <script src="/js/main.js"></script>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    <link rel="icon" type="image/png" href="/images/Logo2.png" />
+    <link href="https://fonts.googleapis.com/css?family=Antic|Economica|Quicksand|Asap" rel="stylesheet">
+     <!--bootstraps-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</head>
+
+<body onload="startTime() || checkday() || checktitle() ">
+    <!-- Navigation bar -->
+    <div class="nav">
+        <span id="NavLogo"></span>
+          <div class="searchbutton">
+            <form class="form-inline" style="display: -webkit-box;" action="/user/searchmovie/search" method="POST">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search movies" aria-label="Search" name="moviename" style="font-size: 24px;">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
+        <span id="NavHelp">?</span>
+        <div class="chip">
+            {{sessionname}}
+        </div>
+        <span id="NavSignup">
+            <a href="/logout">Logout</a>
+        </span>
+    </div>
+    <!--Header-->
+    <div class="header">
+        <div class="headertitle">
+            <span id="Daytimefinder"></span>
+            <span id="Sessionname">{{sessionname}}</span>
+        </div>
+    </div>
+    <!--Dashboard-->
+    <div id="wrapdashboard">
+        <a href="/user/myprofile">
+            <div class="myprofile">
+                <div class="profileimage"></div>
+                <span id="myprofiletext">My Profile</span>
+            </div>
+        </a>
+        <a href="/user/top10">
+            <div class="top10">
+                <div class="top10image"></div>
+                <span id="top10text">Top 10</span>
+            </div>
+        </a>
+        <a href="/user/searchmovie">
+            <div class="searchcontent">
+                <div class="searchcontentimage"></div>
+                <span id="searchcontenttext">Search Movies</span>
+            </div>
+        </a>
+
+        <a href="/user/usercontent">
+            <div class="contentfeed">
+                <div class="contentfeedimage"></div>
+                <span id="contentfeedtext">Movies Feed</span>
+            </div>
+        </a>
+
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <span id="FootHome"></span>
+        <span id="FootTime"></span>
+    </div>
+</body>
+
+</html>
